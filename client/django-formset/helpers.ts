@@ -52,7 +52,11 @@ export namespace StyleHelpers {
 				replaceAll('::placeholder', '.-placeholder-').
 				replaceAll(':placeholder', '.-placeholder-');
 			if (newSelectorText !== cssRule.selectorText) {
-				extraCSSStyleSheet.insertRule(`${newSelectorText}{${cssRule.style.cssText}}`);
+				try {
+					extraCSSStyleSheet.insertRule(`${newSelectorText}{${cssRule.style.cssText}}`);
+				} catch (e) {
+					console.warn(`Unable to insert CSS rule: "${newSelectorText}"`);
+				}
 			}
 		} // else handle other CSSRule types
 	}
