@@ -85,6 +85,22 @@
 		}
 	}
 
+	&.focused {
+		opacity: 1;
+	}
+
+	.dj-submitted &.focused.invalid {
+		opacity: 1;
+	}
+
+	&:not(.focused).invalid {
+		border-color: var(--django-formset-color-invalid);
+	}
+
+	&:not(.focused).valid {
+		border-color: var(--django-formset-color-valid);
+	}
+
 	.ProseMirror {
 		border: none;
 		position: absolute;

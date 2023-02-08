@@ -45,23 +45,23 @@ class AdvertisementModelForm(models.ModelForm):
 
 
 initial_html = """
-<div data-type="draggable-item">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-    <strong>Petierunt uti sibi concilium totius Galliae in diem certam indicere. </strong>
-    <em>Excepteur sint obcaecat cupiditat non proident culpa. </em>
-  </p>
+<p>This is a boring <em>emphasized paragraph</em>.</p>
 
+<div data-type="draggable-item">
+  <p>Followed by a fancy draggable item.</p>
+</div>
+
+<div data-type="draggable-item">
+  <p>And another draggable item.</p>
   <div data-type="draggable-item">
-    <p>This paragraph is nested.</p>
+    <p>And a nested one.</p>
+      <div data-type="draggable-item">
+        <p>But can we go deeper?</p>
+      </div>
   </div>
 </div>
 
-<p>A simple boring paragraph.</p>
-
-<div data-type="draggable-item">
-  <p>Praeterea iter est quasdam res quas ex communi. Pellentesque habitant morbi tristique senectus et netus.</p>
-</div>
+<p>Let's finish with a boring <strong>bold paragraph</strong>.</p>
 """
 
 
@@ -109,6 +109,6 @@ class AdvertisementForm(forms.Form):
             controls.Separator(),
             controls.Redo(),
             controls.Undo(),
-        ], attrs={'rows': 20}),
+        ], attrs={'rows': 15}),
         initial=initial_html,
     )
