@@ -18,6 +18,10 @@ import styles from './RichtextArea.scss';
 import { StyleHelpers } from './helpers';
 
 
+import StarterKit from '@tiptap/starter-kit';
+import DraggableItem from './DraggableItem';
+
+
 abstract class Action {
 	protected readonly button: HTMLButtonElement;
 	public readonly extensions: Array<Extension|Mark|Node> = [];
@@ -354,10 +358,12 @@ class RichtextArea {
 		const editor = new Editor({
 			element: wrapperElement,
 			extensions: [
-				Document,
-				Paragraph,
-				Text,
-				...this.registerCommands(),
+				StarterKit,
+				// Document,
+				// Paragraph,
+				// Text,
+				DraggableItem,
+				//...this.registerCommands(),
 			],
 			content: content,
 			autofocus: false,

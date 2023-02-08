@@ -45,11 +45,23 @@ class AdvertisementModelForm(models.ModelForm):
 
 
 initial_html = """
-<p>
- Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
- <strong>Petierunt uti sibi concilium totius Galliae in diem certam indicere. </strong>
- <em>Excepteur sint obcaecat cupiditat non proident culpa. </em>
-</p>
+<div data-type="draggable-item">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+    <strong>Petierunt uti sibi concilium totius Galliae in diem certam indicere. </strong>
+    <em>Excepteur sint obcaecat cupiditat non proident culpa. </em>
+  </p>
+
+  <div data-type="draggable-item">
+    <p>This paragraph is nested.</p>
+  </div>
+</div>
+
+<p>A simple boring paragraph.</p>
+
+<div data-type="draggable-item">
+  <p>Praeterea iter est quasdam res quas ex communi. Pellentesque habitant morbi tristique senectus et netus.</p>
+</div>
 """
 
 
@@ -97,5 +109,6 @@ class AdvertisementForm(forms.Form):
             controls.Separator(),
             controls.Redo(),
             controls.Undo(),
-        ]),
+        ], attrs={'rows': 20}),
+        initial=initial_html,
     )
