@@ -39,6 +39,7 @@ from testapp.forms.contact import (
 from testapp.forms.birthdate import BirthdateForm
 from testapp.forms.county import CountyForm
 from testapp.forms.customer import CustomerCollection
+from testapp.forms.gumish import GumishCollection
 from testapp.forms.opinion import OpinionForm
 from testapp.forms.person import ButtonActionsForm, SimplePersonForm, sample_person_data, ModelPersonForm
 from testapp.forms.poll import ModelPollForm, PollCollection
@@ -448,6 +449,34 @@ than placing them below each other.
 """
 
 
+class GumishView(EditCollectionView):
+    model = Company
+    collection_class = GumishCollection
+    template_name = 'testapp/form-collection.html'
+    extra_context = {'click_actions': 'clearErrors -> disable -> spinner -> submit -> okay(1500) -> reload !~ enable -> bummer(9999)'}
+
+    def get_queryset(self):
+        if not self.request.session.session_key:
+            self.request.session.cycle_key()
+        queryset = super().get_queryset()
+        return queryset.filter(created_by=self.request.session.session_key)
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        return queryset.last()
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data.update(
+            framework='bootstrap',
+            leaf_name='Gumish',
+            formset_css_classes='row',
+            button_css_classes='mt-4',
+        )
+        return context_data
+
+
 urlpatterns = [
     path('', render_suburls),
     path('success', SuccessView.as_view(), name='form_data_valid'),
@@ -552,6 +581,8 @@ urlpatterns = [
         form_class=AdvertisementForm,
         #initial={'text': initial_html},
     ), kwargs={'group': 'form', 'index': 19}, name='advertisementform'),
+    path('gumish', GumishView.as_view(),
+       kwargs={'group': 'form', 'index': 22}, name='gumish'),
     path('button-actions', DemoFormView.as_view(
         form_class=ButtonActionsForm,
         template_name='testapp/button-actions.html',
