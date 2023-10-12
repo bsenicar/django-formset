@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.forms import fields, forms
+from django.forms import fields, forms, widgets
 
 from formset.collection import FormCollection
 from formset.renderers.default import FormRenderer as DefaultFormRenderer
@@ -85,6 +85,16 @@ class PhoneNumberForm(forms.Form):
             ('work', "Work"),
             ('mobile', "Mobile"),
             ('other', "Other"),
+        ],
+    )
+
+    is_active = fields.ChoiceField(
+        required=False,
+        widget=widgets.RadioSelect,
+        label="Is active?",
+        choices=[
+            ('yes', "Yes"),
+            ('no', "No"),
         ],
     )
 
