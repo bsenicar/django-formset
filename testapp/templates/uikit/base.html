@@ -15,6 +15,11 @@
 <body>
 	<div class="uk-container uk-container-small uk-margin-top uk-margin-bottom">
 		<div>
+			<a href="/">{% include "testapp/house.svg" %}</a>
+			/ <a href="/{{ framework }}">{{ framework.capitalize }}</a>
+			/ <strong>{{ leaf_name }}</strong>
+		</div>
+		<div>
 			{% block main-content %}{% endblock %}
 		</div>
 	</div>
