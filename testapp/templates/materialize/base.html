@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="{{ LANGUAGE_CODE|default:'en' }}">
+
+<head>
+	{% block "head" %}
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"/>
+	<title>Django-Formset Demo</title>
+	<link rel="icon" href="data:,">
+	<link href="{% static 'testapp/css/materialize.css' %}" rel="stylesheet" type="text/css" media="screen">
+	<link href="{% static 'testapp/css/utils.css' %}" rel="stylesheet" type="text/css" media="screen">
+	<script src="{% url 'javascript-catalog' %}"></script>
+	<script type="module" src="{% static 'formset/js/django-formset.js' %}"></script>
+	{% endblock %}
+</head>
+
+<body>
+	<div class="container">
+		<nav>
+			<div class="nav-wrapper">
+				<div class="col s12">
+					<a href="/" class="breadcrumb"><div class="material-icons">home</div></a>
+					<a href="/{{ framework }}/" class="breadcrumb">{{ framework.capitalize }}</a>
+					{% if leaf_name %}<a class="breadcrumb"><strong>{{ leaf_name }}</strong></a>{% endif %}
+				</div>
+			</div>
+		</nav>
+		{{ doc }}
+		{% block main-content %}{% endblock %}
+		{% include "testapp/formset-data.html" %}
+	</div>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3/dist/js/materialize.min.js"></script>
+</body>
+
+</html>

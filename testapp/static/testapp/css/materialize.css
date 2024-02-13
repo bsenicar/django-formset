@@ -1,0 +1,17 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3/dist/css/materialize.min.css";
+
+body {
+	background-color: var(--surface-color);
+}
+
+nav {
+	background-color: inherit;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.breadcrumb:last-child {
+    color: var(--font-on-primary-color-medium);
+}
+

@@ -355,6 +355,7 @@ demo_css_classes = {
         },
     },
     'foundation': {},
+    'materialize': {},
     'tailwind': {
         '*': {'field_css_classes': 'mb-4'},
         'address': {

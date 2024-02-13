@@ -18,6 +18,7 @@ def render_landing(request):
             'bootstrap',
             'bulma',
             'foundation',
+            'materialize',
             'tailwind',
             'uikit',
         ],
@@ -33,6 +34,7 @@ urlpatterns = [
     path('bootstrap/', include(('testapp.views', 'bootstrap'))),
     path('bulma/', include(('testapp.views', 'bulma'))),
     path('foundation/', include(('testapp.views', 'foundation'))),
+    path('materialize/', include(('testapp.views', 'materialize'))),
     path('tailwind/', include(('testapp.views', 'tailwind'))),
     path('uikit/', include(('testapp.views', 'uikit'))),
     path('jsi18n/formset.js', cache_page(604800, key_prefix='jsi18n-countries')(
